@@ -1,0 +1,11 @@
+﻿@inject SohbetServisi ss
+
+<ul id="mesajlar">
+	@foreach (Mesaj mesaj in ss.MesajlariGetir())
+	{
+		<li data-id="@mesaj.Id">
+			<strong>@mesaj.Gonderen: </strong>
+			@mesaj.Icerik
+		</li>
+	}
+</ul>

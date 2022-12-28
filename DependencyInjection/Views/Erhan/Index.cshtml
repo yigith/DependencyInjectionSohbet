@@ -1,0 +1,14 @@
+﻿@inject RastgeleSayiServisi rss
+@{
+	ViewData["Title"] = "Erhan";
+}
+
+<h1>Erhan</h1>
+
+<p>Erhan'ın Uğurlu Sayısı (Action'dan Gelen): @ViewBag.Sansli</p>
+<p>Erhan'ın Uğurlu Sayısı (View'dan Gelen): @rss.Aralik(1,17)</p>
+
+<hr />
+Hizmetin Oluşturulma Zamanları: <br />
+Action'dan Gelen: @ViewBag.OlusmaZamani<br />
+View'dan Gelen: @rss.ServisinOlusturulmaZamani.ToString("o")

@@ -1,0 +1,16 @@
+﻿@inject RastgeleSayiServisi RastgeleHizmeti
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>
+
+<h2>Rastgele 6 Sayı (1-49 aralığında)</h2>
+
+<ul>
+    @foreach (int sayi in RastgeleHizmeti.Aralik(1, 49, 6).OrderBy(x => x))
+    {
+        <li>@sayi</li>
+    }
+</ul>

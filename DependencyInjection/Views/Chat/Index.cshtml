@@ -1,0 +1,41 @@
+﻿@inject SohbetServisi ss;
+@{
+	ViewBag.Title = "Sohbet";
+}
+
+<h1>@ViewBag.Title</h1>
+
+<form id="frmMesaj">
+	<div class="mb-3">
+		<input id="mesaj" type="text" placeholder="Mesaj.." required />
+	</div>
+</form>
+
+<div id="mesajlarKutusu">
+	<partial name="_Mesajlar" />
+</div>
+
+@section Scripts {
+	<script>
+		let gonderen;
+		let urlMesajlar = "@Url.Action("MesajlarPartial", "Chat")";
+
+		do
+		{
+			gonderen = prompt("Adınız:");
+		} while(!gonderen || gonderen.trim() == "");
+		
+		$("#frmMesaj").submit(function(e) {
+			e.preventDefault();
+			let icerik = $("#mesaj").val();
+			$("#mesaj").val(""); // metin kutusunu temizle
+			let url = "@Url.Action("Gonder", "Chat")";
+			$.post(url, { gonderen, icerik });
+		});
+
+		setInterval(function() {
+			$("#mesajlarKutusu").load(urlMesajlar);
+		}, 500);
+
+	</script>
+}
